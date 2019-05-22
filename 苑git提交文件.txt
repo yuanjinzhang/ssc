@@ -1,0 +1,9 @@
+第一步：关联本地库和git远程库
+git clone ssh//：........
+第二步：将本地文件提交到缓存中
+git add .
+	将所有文件提交到本地库中
+git commit -m "commit all file"
+第三步：提交本地到远程库
+git push -u origin master //第一次提交
+git push origin master    //非第一次提交
