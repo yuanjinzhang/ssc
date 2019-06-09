@@ -20,7 +20,7 @@ public class TestController {
 	@RequestMapping("/")
 	public String index() {
 		
-		return "home";
+		return "login";
 	}
 	
 	@RequestMapping("/getAllTeachers")

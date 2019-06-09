@@ -10,7 +10,5 @@ import com.scs.beans.Teacher;
 @Mapper
 public interface TestMapper {
 	@Select("select * from t_teacher")
-	List<Teacher> getTeachers();
-	
-	
+	List<Teacher> getTeachers();	
 }
