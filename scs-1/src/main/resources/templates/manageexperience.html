@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+    <style>
+form{
+    background: #F8F8FF ;
+    color:#575454;  
+    width:auto;
+    margin:10px auto;
+    font-size:15px;
+}
+table{
+    margin:10px auto;
+}
+a{
+    text-decoration:none;
+}
+input[type="button"]{
+    background:#228B22;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    width:150px;
+    height:40px;
+}
+td:first-child{
+    text-align:right;
+    padding:0 5px;
+}
+td:only-child{
+    text-align:center;
+    font-size:12px;
+}
+span:before{
+    content:"* ";
+    color:red;
+}
+input[type="text"]:read-only{
+    border:#888484 solid 2px;
+    background:#888484;
+    font-weight:bold;   
+}
+input[type="text"]:hover{
+    background:#EFD9AC;
+}
+</style>
+
+<script>
+  function getSelectFile()
+  {
+      alert('保存成功');
+  }
+</script>
+
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>jf</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">                
+                 <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li><a href="http://localhost:8080/lookexperience">机房实验查询</a></li>  
+                   </ul>                  
+                  </li>
+                  <li><a><i class="fa fa-table"></i>安排实验 <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                      <li><a href="http://localhost:8080/manageexperience">实验安排</a></li>       
+                  </ul>             
+                  </li>                                                                  
+                </ul>
+              </div>        
+            </div>
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>       
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>机房管理员</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>机房管理员</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                      <form>
+<div>实验安排</div>
+<table>
+    <tr><td><span>实验名称：</span></td><td><input type="text" name="name" /></td></tr>
+    <tr><td><span>实验时间：</span></td><td><input type="text" name="time" /></td></tr>
+    <tr><td><span>实验地点：</span></td><td><input type="text" name="address" /></td></tr>
+    <tr><td><span>实验课程老师：</span></td><td><input type="text" name="teacher" /></td></tr>   
+    <tr><td colspan="2"><input type="button" name="submit" value="保存"  onclick="getSelectFile();"/></td></tr>
+</table>
+</form>
+</body>				
+      </div>
+    </div>
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>   
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.min.js"></script>
+  </body>
+</html>
