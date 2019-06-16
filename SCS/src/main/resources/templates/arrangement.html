@@ -13,9 +13,11 @@
     <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="/css/custom.min.css" rel="stylesheet">
+      <!-- 引入Bootstrap-table -->
+	<link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
+   
   </head>
 
   <body class="nav-md">
@@ -228,31 +230,10 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                     <table class="table table-striped">
-					     <thead>
-					         <tr>
-					             <th>课程名</th>
-					             <th>主讲教师</th> 
-					             <th>时间</th>
-					             <th>地点</th>    
-					             <th>保存</th>                                    
-					         </tr>
-					         <tr>
-					         	<th>课程名</th>
-					             <th>主讲教师</th>
-					             <th><input type="text" class="form-control" name="teacher_name" placeholder="...时间..."></th>
-	                    		<th><input type="text" class="form-control" name="teacher_name" placeholder="...地点..."></th>
-	                    		<th><button type="submit" class="btn btn-default submit" value= "确定">确定</button></th>
-					         </tr>
-					     </thead>
-					     <tbody>
-					         <tr th:each="teacher,status : ${teacher_list}"> 
-					              <td th:text="${status.count}">java</td> 
-						          <td th:text="${teacher.account}">王老师</td>  
-						          <td th:text="${teacher.name}"></td>                            
-					         </tr>                        
-					       </tbody>
-					 </table>
+                     <div class="x_content">
+                      	<div id="toolbar"></div>
+							<table id="table"></table>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -283,6 +264,11 @@
     
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.min.js"></script>
+    <!-- 引入Bootstrap-Table Js -->
+	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
+	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
+	<script th:src="@{/js/arrangeCourse.js}"></script>
+	
   </body>
 <script type="text/javascript" src="/templets/js/jquery.js"></script>  
 

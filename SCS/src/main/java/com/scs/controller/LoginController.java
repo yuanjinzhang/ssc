@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scs.beans.Apply;
+import com.scs.beans.Course;
 import com.scs.beans.Teacher;
 import com.scs.beans.User;
 import com.scs.comon.PageModel;
@@ -30,8 +31,6 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
-	@Autowired
-	private LoginMapper loginMapper;
 	
 	@RequestMapping("/login")
 	public String login(String username,String password,Model model) {
@@ -52,18 +51,25 @@ public class LoginController {
 	}
 	@RequestMapping("/student/listUsers")
 	@ResponseBody
-	public ResponseModel<User> lilstUsers(@RequestBody RequestModel<User> reqModel1){
-		PageModel pModel=reqModel1.getPageModel();
+	public ResponseModel<User> lilstUsers(@RequestBody RequestModel<User> reqModel){
+		PageModel pModel=reqModel.getPageModel();
 		ResponseModel<User> resModel=loginService.listUsers(pModel.getOffset(),pModel.getPageSize());	
 		return resModel;
 	}
 	
 	@RequestMapping("/teacher/apply")
 	@ResponseBody
-	public ResponseModel<Apply> applyList(@RequestBody RequestModel<Apply> reqModel2){
-		PageModel pageModel=reqModel2.getPageModel();
+	public ResponseModel<Apply> applyList(@RequestBody RequestModel<Apply> reqModel){
+		PageModel pageModel=reqModel.getPageModel();
 		ResponseModel<Apply> resModel=loginService.applyList(pageModel.getOffset(),pageModel.getPageSize());	
 		return resModel;
 	}
-
+	
+	@RequestMapping("/arrange/course")
+	@ResponseBody
+	public ResponseModel<Course> listCourse(@RequestBody RequestModel<Course> reqModel){
+		PageModel pageModel=reqModel.getPageModel();
+		ResponseModel<Apply> resModel=loginService.listCourse(pageModel.getOffset(),pageModel.getPageSize());	
+		return resModel;
+	}
 }

@@ -45,5 +45,7 @@ public interface LoginMapper {
 	@Select("select * from lab_apply a left join lab_user u on a.user_id=u.id  limit #{offset},#{pageSize} ")
 	List<Apply> applyList(@Param("offset")int offset, @Param("pageSize")int pageSize);
 	
+	@Select("select * from lab_course c left join lab_user u on c.user_id=u.id where c.status=0  limit #{offset},#{pageSize} ")
+	List<Apply> listCourse(@Param("offset")int offset, @Param("pageSize")int pageSize);
 
 }

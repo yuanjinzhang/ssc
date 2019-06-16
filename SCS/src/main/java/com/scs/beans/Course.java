@@ -7,6 +7,21 @@ public class Course {
 	private int credit;
 	private int period;
 	private int num;
+	private User user;
+	private String name;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getCno() {
 		return cno;
 	}
@@ -42,7 +57,5 @@ public class Course {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	
-	
+	}	
 }

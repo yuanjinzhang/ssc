@@ -81,35 +81,35 @@ function InitMainTable () {
         }, {
             field: 'id',
             title: 'ID',
+            align: 'center',
             sortable: true
         }, {
             field: 'name',
             title: '姓名'
-            //sortable: true
+            align: 'center',
         }, {
             field: 'sex',
             title: '性别',
-            //sortable: true,
-            //formatter: emailFormatter
+            align: 'center',
         }, {
             field: 'workno',
             title: '账号',
-            //formatter: linkFormatter
+            align: 'center',
         }, {
             field: 'password',
             title: '密码',
-            //formatter: dateFormatter
+            align: 'center',
         }, {
             field: 'phone',
             title: '电话号码'
         }, {
             field: 'college',
             title: '学院',
-            //sortable: true
+            align: 'center',
         }, {
             field: 'username',
             title: '教师',
-            //sortable: true
+            align: 'center',
         }, {
             field:'ID',
             title: '操作',
