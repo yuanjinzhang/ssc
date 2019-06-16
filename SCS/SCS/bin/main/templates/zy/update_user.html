@@ -6,27 +6,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>学生选课系统 </title>
+    <title>学生选课系统</title>
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
-     <script>
-  function getChange()
-  {
-      alert('修改成功');
-  }
-</script>
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+    <!-- 引入Bootstrap-table -->
+   <link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
   </head>
+
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>系统管理单元</span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>系统管理单元</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -34,35 +33,33 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>Admin</h2>
+                <span>Welcome</span>
+                     <h2>Admin</h2>
               </div>
               <div class="clearfix"></div>
             </div>
             <!-- /menu profile quick info -->
-
             <br />
 
-             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <!-- sidebar menu -->
+           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>管理列</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i>查询与修改用户信息 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                     <li><a href="/turnPage/9">修改教师信息</a></li>
-                      <li><a href="/turnPage/8">修改学生信息</a></li>
-                      <li><a href="/turnPage/10">修改机房人员信息</a></li>
-                      <li><a href="/turnPage/11">修改教务人员信息</a></li>
-                    </ul>
-                  </li>                                                                     
+                <ul class="nav side-menu">                
+                 <li><a><i class="fa fa-desktop"></i> 用户信息管理 <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li><a href="/turnPage/8">查询用户信息</a></li>
+                      <li><a href="/turnPage/9">修改用户信息</a></li>
+                   </ul>                  
+                  </li>                                                               
                 </ul>
-              </div>             
+              </div>        
             </div>
             <!-- /sidebar menu -->
+
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -80,19 +77,20 @@
             </div>
             <!-- /menu footer buttons -->
           </div>
-        </div>       
-              <!-- page content -->
+        </div>
+
+        <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>课程安排</h3>
+                <h3>修改用户信息</h3>
               </div>
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   	<form class="input-group" action="/search">
-	                    <input type="text" class="form-control" name="课程名" placeholder="...课程名...">
+	                    <input type="text" class="form-control" name="名" placeholder="......">
 	                    <span class="input-group-btn">
 	                    	<button type="submit" class="btn btn-default submit" value= "搜索">搜索</button>
 	                    </span>
@@ -100,55 +98,90 @@
                 </div>
               </div>
             </div>
-
             <div class="clearfix"></div>
+            
+
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>修改用户信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>                   
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                     <table class="table table-striped">
-					     <thead>
-					         <tr>
-					             <th>id</th>
-					             <th>院系</th> 
-					             <th>职务</th>
-					             <th>状态</th>    
-					         </tr>
-					         <tr>
-					         	<th><input type="text" class="form-control" name="teacher_name" placeholder="...id..."></th>
-	                    		<th><input type="text" class="form-control" name="teacher_name" placeholder="...院系..."></th>
-					             <th><input type="text" class="form-control" name="teacher_name" placeholder="...职务..."></th>
-	                    		<th><input type="text" class="form-control" name="teacher_name" placeholder="...状态..."></th>
-	                    		<th><button type="submit" class="btn btn-default submit" value= "修改" onclick="getChange();">修改</button></th>
-					         </tr>
-					     </thead>
-					     <tbody>
-					         <tr th:each="teacher,status : ${teacher_list}"> 
-					              <td th:text="${status.count}">java</td> 
-						          <td th:text="${teacher.account}">王老师</td>  
-						          <td th:text="${teacher.name}"></td>                            
-					         </tr>                        
-					       </tbody>
-					 </table>
-                  </div>
-                </div>
+               <div id="toolbar"></div>
+							<table id="table"></table>
               </div>
             </div>
           </div>
         </div>
         <!-- /page content -->
-       
+
+<!-- 修改 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="updateModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">修改用户信息</h4> 
+           <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	        	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >ID</span>
+					  	<input type="text" class="form-control" id="updateId" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >学院</span>
+					  	<input type="text" class="form-control" id="updateCollege" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >职务</span>
+					  <input type="text" class="form-control" id="updatePositionId" aria-describedby="basic-addon3">
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >状态</span>
+					  	<input type="text" class="form-control" id="updateStatus" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="updateBtn">修改</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+<!-- 删除 -->
+	<div class="modal fade=" tabindex="-1" role="dialog" id="deleteModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">用户删除</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	      	<!-- 隐藏域 -->
+	      	<input id="deleteId" style="display:none;">
+	      	<h2 style="text-align:center;">确定删除</h2>
+	        <h2 style="text-align:center;" id="deleteInfo"></h2> 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-danger" id="deleteBtn">确定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	
+
       </div>
     </div>
 
@@ -163,10 +196,13 @@
     
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.min.js"></script>
+    
+    <!-- 引入Bootstrap-Table Js -->
+	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
+	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
+    <script th:src="@{/js/update_user.js}"></script>
+    
   </body>
-<script type="text/javascript" src="/templets/js/jquery.js"></script>  
-
-<script type="text/javascript">    
-
-</script>
 </html>
+
+

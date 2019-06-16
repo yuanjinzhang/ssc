@@ -3,39 +3,15 @@
  */
 $(document).ready(function() {
 	InitMainTable();
-	
-	$("#updateBtn").click(function(){
-		$.ajax("/studentManager/update",
-		        {
-		            dataType: "json", // 预期服务器返回的数据类型。
-		            type: "POST", //  请求方式 POST或GET
-		            crossDomain:true,  // 跨域请求
-		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
-		            // 发送到服务器的数据
-		            data:JSON.stringify({
-		            	"id"		:	$("#stuId").val(),
-		    			"workNo"	:	$("#stuWorkNo").val(),
-		    			"name"		:	$("#stuName").val(),
-		    			"sex"		:	$("#stuSex").val(),
-		            }),
-		          
-		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
-		            // 请求成功后的回调函数。
-		            success: function(data){
-		                    alert(data.msg);
-		                    $('#table').bootstrapTable('refresh');
-		            },
-		            error: function(){
-		                alert("请求错误，请检查网络连接");
-		           }
-		    })
-	})
+	initUpdate();
+	initDelete();
 })
+
 var $table;
 //初始化bootstrap-table的内容
 function InitMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/getLabList';
+    var queryUrl = '/getUserList';
 	//var rows= $("#table").bootstrapTable('getSelections');
 	$table = $('#table').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
@@ -80,17 +56,36 @@ function InitMainTable () {
             checkbox: true,  
             visible: true                  //是否显示复选框  
         }, {
-            field: 'Eno',
+            field: 'id',
             title: 'ID',
             sortable: true
         }, {
-            field: 'Place',
+            field: 'workno',
+            title: '用户编号',
+            //sortable: true
+        },  {
+            field: 'name',
             title: '姓名',
+        }, {
+            field: 'sex',
+            title: '性别',
             //sortable: true
         }, {
-            field: 'Etime',
-            title: '性别',
+            field: 'phone',
+            title: '手机号',
+        },{
+            field: 'college',
+            title: '院系',
         }, {
+            field: 'positionId',
+            title: '职务',
+        },{
+            field: 'status',
+            title: '状态',
+        },{
+            field: 'classId',
+            title: '班级',
+        },{
             field:'ID',
             title: '操作',
             align: 'center',
@@ -115,18 +110,70 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">编辑</button>',
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">修改</button>',
 		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
-			$("#stuId").val(row.id);
-			$("#stuWorkNo").val(row.workNo);
-			$("#stuName").val(row.name);
-			$("#stuSex").val(row.sex);
+			$("#updateId").val(row.id);
+			$("#updateCollege").val(row.college);
+			$("#updatePositionId").val(row.positionId);
+			$("#updateStatus").val(row.status);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			
 		}
+}
+function initUpdate(){
+	$("#updateBtn").click(function(){
+		$.ajax("/update_user/update",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"id":$("#updateId").val(),
+		            	"college":$("#updateCollege").val(),
+		            	"positionId":$("#updatePositionId").val(),
+		            	"status":$("#updateStatus").val()
+		            }),	          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	alert("更新成功");
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
+
+function initDelete(){
+	$("#deleteBtn").click(function(){
+		$.ajax("/update_user/delete",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"id"		:	$("#deleteId").val()
+		            }),
+		          
+		            //async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	alert("删除成功");
+		               	
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
 }

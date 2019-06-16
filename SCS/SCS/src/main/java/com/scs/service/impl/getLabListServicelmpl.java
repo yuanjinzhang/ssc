@@ -25,7 +25,7 @@ import com.scs.service.getLabListService;
 		@Transactional
 		public ResponseModel<Lab> getLabs(int offset, int pageSize) {
 			// TODO Auto-generated method stub
-			int total=getLabListMapper.getLabTotal();
+			int total=getLabListMapper.getTotal();
 			List<Lab> labs=getLabListMapper.getLabs(offset,pageSize);			
 			return new ResponseModel<Lab>(labs,total);
 		}

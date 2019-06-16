@@ -24,7 +24,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>教务管理单元</span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>系统/机房管理单元</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -50,24 +50,10 @@
               <div class="menu_section">
                 <h3>管理列</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> 审核信息<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i>用户信息管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-							<li><a href="/turnPage/1">学生选课信息</a></li>
-							<li><a href="/turnPage/2">选课信息</a></li>
-							<li><a href="/turnPage/3">开课信息</a></li>
-					</ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> 安排授课<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/4">安排授课地点及时间</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i>查询修改用户信息 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/9">修改教师信息</a></li>
-                      <li><a href="/turnPage/8">修改学生信息</a></li>
-                      <li><a href="/turnPage/10">修改机房人员信息</a></li>
-                      <li><a href="/turnPage/11">修改教务人员信息</a></li>
+                      <li><a href="/turnPage/9">修改用户信息</a></li>
+                      <li><a href="/turnPage/8">查询用户信息</a></li>
                     </ul>
                   </li>   
                   <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
@@ -105,104 +91,6 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
-
-        <!-- top navigation --><!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="/javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/images/img.jpg" alt="">John Doe
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="/javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="/javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="/javascript:;">Help</a></li>
-                    <li><a href="/turnPage/5"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="/javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -263,6 +151,10 @@
 					     <tbody>
 					         <tr th:each=" User: ${usersList}"> 					             
 						          <td th:text="${User.name}"></td> 
+						           <td th:text="${User.name}"></td> 
+						            <td th:text="${User.name}"></td> 
+						             <td th:text="${User.name}"></td> 
+						              <td th:text="${User.name}"></td> 
 						          <td><button type="submit"  value= "提交" id="pass/selectInfo">通过</button></td>
 					              <td><button type="submit"  value= "删除" id="fail/selectInfo">删除</button></td>
 					          

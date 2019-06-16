@@ -10,9 +10,9 @@ public interface getLabListMapper {
 	List<Lab> getLabList();
 
 	@Select("select count(*) from lab_lab")
-	int getLabTotal();
+	int getTotal();
 
-	@Select("select * from lab_lab limit #{offset} #{pageSize}")
+	@Select("select * from lab_lab limit #{offset},#{pageSize}")
 	List<Lab> getLabs(@Param("offset")int offset, @Param("pageSize")int pageSize);	
 	//@Select("select * from lab_lab")
 	//List<Lab> getLabs();

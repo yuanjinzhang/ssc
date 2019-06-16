@@ -3,34 +3,8 @@
  */
 $(document).ready(function() {
 	InitMainTable();
-	
-	$("#updateBtn").click(function(){
-		$.ajax("/studentManager/update",
-		        {
-		            dataType: "json", // 预期服务器返回的数据类型。
-		            type: "POST", //  请求方式 POST或GET
-		            crossDomain:true,  // 跨域请求
-		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
-		            // 发送到服务器的数据
-		            data:JSON.stringify({
-		            	"id"		:	$("#stuId").val(),
-		    			"workNo"	:	$("#stuWorkNo").val(),
-		    			"name"		:	$("#stuName").val(),
-		    			"sex"		:	$("#stuSex").val(),
-		            }),
-		          
-		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
-		            // 请求成功后的回调函数。
-		            success: function(data){
-		                    alert(data.msg);
-		                    $('#table').bootstrapTable('refresh');
-		            },
-		            error: function(){
-		                alert("请求错误，请检查网络连接");
-		           }
-		    })
+	InitUpdate();
 	})
-})
 var $table;
 //初始化bootstrap-table的内容
 function InitMainTable () {
@@ -80,16 +54,23 @@ function InitMainTable () {
             checkbox: true,  
             visible: true                  //是否显示复选框  
         }, {
-            field: 'Eno',
-            title: 'ID',
+            field: 'eno',
+            title: '实验编号',
             sortable: true
         }, {
-            field: 'Place',
-            title: '姓名',
+            field: 'cname',
+            title: '实验名',
+            //sortable: true
+        },  {
+            field: 'place',
+            title: '地点',
+        }, {
+            field: 'etime',
+            title: '时间',
             //sortable: true
         }, {
-            field: 'Etime',
-            title: '性别',
+            field: 'cno',
+            title: '课程号',
         }, {
             field:'ID',
             title: '操作',
@@ -129,4 +110,32 @@ var operateEvents={
 		"click #tableDelete":function(e,value,row,index){
 			
 		}
+}
+function InitUpdate(){
+		$("#updateBtn").click(function(){
+			$.ajax("/select_test/update",
+			        {
+			            dataType: "json", // 预期服务器返回的数据类型。
+			            type: "POST", //  请求方式 POST或GET
+			            crossDomain:true,  // 跨域请求
+			            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+			            // 发送到服务器的数据
+			            data:JSON.stringify({
+			            	"eno"		:	$("#Eno").val(),
+			    			"cname"	    :	$("#Cname").val(),
+			    			"etime"		:	$("#Etime").val(),
+			    			"place"		:	$("#Place").val(),
+			            }),
+			          
+			            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+			            // 请求成功后的回调函数。
+			            success: function(data){
+			                    alert(data.msg);
+			                    $('#table').bootstrapTable('refresh');
+			            },
+			            error: function(){
+			                alert("请求错误，请检查网络连接");
+			           }
+			    })
+		})
 }

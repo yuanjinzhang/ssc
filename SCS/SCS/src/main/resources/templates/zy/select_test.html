@@ -46,7 +46,7 @@
             </div>
             <!-- /menu profile quick info -->
 
-            <br />
+            <br/>
 
             <!-- sidebar menu -->
              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -121,6 +121,54 @@
           </div>
         </div>
         <!-- /page content -->
+        
+<!-- 修改 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="updateModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">实验信息修改</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	        	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >实验编号</span>
+					  	<input type="text" class="form-control" id="updateEno" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >实验名称</span>
+					  	<input type="text" class="form-control" id="updateCname" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >时间</span>
+					  <input type="text" class="form-control" id="updateEtime" aria-describedby="basic-addon3">
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >地点</span>
+					  	<input type="text" class="form-control" id="updatePlace" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="updateBtn">提交</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+        
 
       </div>
     </div>
@@ -139,7 +187,7 @@
     <!-- 引入Bootstrap-Table Js -->
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
-    <script th:src="@{/js/studentManager.js}"></script>
+    <script th:src="@{/js/ST.js}"></script>
     
   </body>
 </html>
