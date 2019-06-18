@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>学生选课系统 </title>
+
+    <title>学生选课系统</title>
+
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -16,6 +18,8 @@
 
     <!-- Custom Theme Style -->
     <link href="/css/custom.min.css" rel="stylesheet">
+    <!-- 引入Bootstrap-table -->
+   <link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
   </head>
 
   <body class="nav-md">
@@ -24,50 +28,38 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>系统/机房管理单元</span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>机房管理单元</span></a>
             </div>
-
             <div class="clearfix"></div>
-
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
                 <img src="/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome</span>
-                <span th:each=" User: ${usersList}"> 					             
+                <span>Welcome,</span>
+                  <span th:each=" User: ${usersList}"> 					             
 						          <td th:text="${User.name}"></td> 
               </div>
               <div class="clearfix"></div>
             </div>
             <!-- /menu profile quick info -->
-
-            <br />
-
+            <br/>
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>管理列</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i>用户信息管理 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/9">修改用户信息</a></li>
-                      <li><a href="/turnPage/8">查询用户信息</a></li>
-                    </ul>
-                  </li>   
-                  <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/7">机房实验安排</a></li>  
-                      <li><a href="/turnPage/12">实验查询</a></li>                         
-                    </ul>
-                  </li>              
-                  </ul>              
+                 <ul class="nav side-menu">                
+                 <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                      <li><a href="/turnPage/7">机房实验安排</a></li>
+                      <li><a href="/turnPage/12">实验查询</a></li>   
+                   </ul>                  
+                  </li>                                                                                 
+                </ul>
               </div>
-
             </div>
             <!-- /sidebar menu -->
-
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -86,12 +78,13 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
+
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>用户信息</h3>
+                <h3>查询实验信息</h3>
               </div>
 
               <div class="title_right">
@@ -105,54 +98,17 @@
                 </div>
               </div>
             </div>
-
-            <div class="clearfix"></div>
-
+            <div class="clearfix"></div>           
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>用户信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>                       
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                      <table class="table table-striped">
-					     <thead>
-					         <tr>
-					             <th>用户ID</th>
-					             <th>用户编号(账号)</th>   
-					             <th>用户姓名</th>
-					             <th>用户性别</th>
-					             <th>用户学院</th>						            		                                    
-					         </tr>
-					     </thead>
-					     <tbody>
-					         <tr th:each=" User: ${usersList}"> 					             
-						          <td th:text="${User.id}"></td> 
-						           <td th:text="${User.workno}"></td> 
-						            <td th:text="${User.name}"></td> 
-						             <td th:text="${User.sex}"></td> 
-						              <td th:text="${User.college}"></td> 					          
-					         </tr>                        
-					       </tbody>
-					 </table>
-                  </div>
-                </div>
+               <div id="toolbar"></div>
+							<table id="table"></table>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->       
-      </div>
+        <!-- /page content -->	
+    </div>
     </div>
 
     <!-- jQuery -->
@@ -166,6 +122,13 @@
     
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.min.js"></script>
+    
+    <!-- 引入Bootstrap-Table Js -->
+	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
+	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
+    <script th:src="@{/js/search_test.js}"></script>
+    
   </body>
 </html>
+
 

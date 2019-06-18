@@ -18,12 +18,6 @@
     <link href="/css/custom.min.css" rel="stylesheet">
      <!-- 引入Bootstrap-table -->
     <link rel="stylesheet" th:href="@{/bootstrapTable/bootstrap-table.css}">
-    <script>
-  function getChange()
-  {
-      alert('修改成功');
-  }
-</script>
   </head>
 
   <body class="nav-md">
@@ -96,9 +90,9 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   	<form class="input-group" action="/search">
-	                    <input type="text" class="form-control" name="名" placeholder="......">
+	                    <input type="text" class="form-control" id="searchId" placeholder="......">
 	                    <span class="input-group-btn">
-	                    	<button type="submit" class="btn btn-default submit" value= "搜索">搜索</button>
+	                    	<button type="submit" class="btn btn-default submit" id="search">搜索</button>
 	                    </span>
                   	</form>
                 </div>
@@ -115,7 +109,6 @@
           </div>
         </div>
         <!-- /page content -->
-
       </div>
     </div>
 
@@ -134,8 +127,5 @@
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>	
 	<script th:src="@{/js/select_user.js}"></script>
   </body>
-<script type="text/javascript">    
-
-</script>
 </html>
 

@@ -58,16 +58,11 @@
                   </li>   
                   <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/turnPage/7">机房实验查询</a></li>                    
+                      <li><a href="/turnPage/7">机房实验安排</a></li>  
+                      <li><a href="/turnPage/12">实验查询</a></li>                         
                     </ul>
-                  </li>
-                  <li><a><i class="fa fa-table"></i>安排实验 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/6">实验安排</a></li>                    
-                    </ul>
-                  </li>   
-                  </ul>
-              
+                  </li>              
+                  </ul>              
               </div>
 
             </div>
@@ -96,13 +91,13 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>开课信息</h3>
+                <h3>用户信息</h3>
               </div>
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   	<form class="input-group" action="/search">
-	                    <input type="text" class="form-control" name="课程名" placeholder="...课程名...">
+	                    <input type="text" class="form-control" name="名" placeholder="......">
 	                    <span class="input-group-btn">
 	                    	<button type="submit" class="btn btn-default submit" value= "搜索">搜索</button>
 	                    </span>
@@ -117,18 +112,12 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>开课信息</h2>
+                    <h2>用户信息</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>                       
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
@@ -139,25 +128,20 @@
                       <table class="table table-striped">
 					     <thead>
 					         <tr>
-					             <th>教师姓名</th>
-					             <th>课程名</th>   
-					             <th>课程人数</th>
-					             <th>实验有无</th>
-					             <th>申请时间</th>	
-					              <th>申请结果</th>	
-					               <th>是否删除</th>				                                    
+					             <th>用户ID</th>
+					             <th>用户编号(账号)</th>   
+					             <th>用户姓名</th>
+					             <th>用户性别</th>
+					             <th>用户学院</th>						            		                                    
 					         </tr>
 					     </thead>
 					     <tbody>
 					         <tr th:each=" User: ${usersList}"> 					             
-						          <td th:text="${User.name}"></td> 
-						           <td th:text="${User.name}"></td> 
+						          <td th:text="${User.id}"></td> 
+						           <td th:text="${User.workno}"></td> 
 						            <td th:text="${User.name}"></td> 
-						             <td th:text="${User.name}"></td> 
-						              <td th:text="${User.name}"></td> 
-						          <td><button type="submit"  value= "提交" id="pass/selectInfo">通过</button></td>
-					              <td><button type="submit"  value= "删除" id="fail/selectInfo">删除</button></td>
-					          
+						             <td th:text="${User.sex}"></td> 
+						              <td th:text="${User.college}"></td> 					          
 					         </tr>                        
 					       </tbody>
 					 </table>
@@ -167,16 +151,7 @@
             </div>
           </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+        <!-- /page content -->       
       </div>
     </div>
 
@@ -192,8 +167,5 @@
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.min.js"></script>
   </body>
-<script type="text/javascript">    
-
-</script>
 </html>
 

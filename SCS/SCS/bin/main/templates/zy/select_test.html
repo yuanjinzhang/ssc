@@ -55,19 +55,14 @@
                  <ul class="nav side-menu">                
                  <li><a><i class="fa fa-desktop"></i> 机房信息管理 <span class="fa fa-chevron-down"></span></a>
                    <ul class="nav child_menu">
-                      <li><a href="/turnPage/7">机房实验查询</a></li>  
+                      <li><a href="/turnPage/7">机房实验安排</a></li>
+                      <li><a href="/turnPage/12">实验查询</a></li>   
                    </ul>                  
-                  </li>
-                  <li><a><i class="fa fa-table"></i>安排实验 <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                      <li><a href="/turnPage/6">实验安排</a></li>       
-                  </ul>             
-                  </li>                                                                  
+                  </li>                                                                                 
                 </ul>
               </div>
             </div>
             <!-- /sidebar menu -->
-
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -87,20 +82,18 @@
           </div>
         </div>
 
-       
-
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>实验课信息</h3>
+                <h3>修改实验信息</h3>
               </div>
 
               <div class="title_right">
-               <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   	<form class="input-group" action="/search">
-	                    <input type="text" class="form-control" name="课程名" placeholder="...课程名...">
+	                    <input type="text" class="form-control" name="名" placeholder="......">
 	                    <span class="input-group-btn">
 	                    	<button type="submit" class="btn btn-default submit" value= "搜索">搜索</button>
 	                    </span>
@@ -108,29 +101,28 @@
                 </div>
               </div>
             </div>
-
             <div class="clearfix"></div>
+            
+
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div id="toolbar"></div>
+               <div id="toolbar"></div>
 							<table id="table"></table>
-
               </div>
             </div>
           </div>
         </div>
         <!-- /page content -->
-        
+
 <!-- 修改 -->
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="updateModal">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">实验信息修改</h4>
-	      </div>
-	      <!-- 主题内容 -->
+	        <h4 class="modal-title">修改实验信息</h4> 
+           <!-- 主题内容 -->
 	      <div class="modal-body">
 	        <div class="row">
 	        	<div class="col-md-6">
@@ -142,19 +134,25 @@
 	          	<div class="col-md-6">
 	         		<div class="input-group">
 					  	<span class="input-group-addon" >实验名称</span>
-					  	<input type="text" class="form-control" id="updateCname" aria-describedby="basic-addon3">
+					  	<input type="text" class="form-control" id="updateCname" aria-describedby="basic-addon3" readonly="readonly">
 					</div>
 	          	</div>
 	          	<div class="col-md-6">
 	          		<div class="input-group">
-					  <span class="input-group-addon" >时间</span>
-					  <input type="text" class="form-control" id="updateEtime" aria-describedby="basic-addon3">
+					  <span class="input-group-addon" >地点</span>
+					  <input type="text" class="form-control" id="updatePlace" aria-describedby="basic-addon3">
 					</div>
 			  	</div>
 	          	<div class="col-md-6">
 	         		<div class="input-group">
-					  	<span class="input-group-addon" >地点</span>
-					  	<input type="text" class="form-control" id="updatePlace" aria-describedby="basic-addon3">
+					  	<span class="input-group-addon" >时间</span>
+					  	<input type="date" class="form-control" id="updateEtime" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课程号</span>
+					  	<input type="text" class="form-control" id="updateCno" aria-describedby="basic-addon3" readonly="readonly">
 					</div>
 	          	</div>
 	        </div>
@@ -162,15 +160,36 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="button" class="btn btn-primary" id="updateBtn">提交</button>
+	        <button type="button" class="btn btn-primary" id="updateBtn">修改</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-
-        
-
-      </div>
+</div>
+	
+<!-- 删除 -->
+	<div class="modal fade=" tabindex="-1" role="dialog" id="deleteModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">实验删除</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	      	<!-- 隐藏域 -->
+	      	<input id="deleteEno" style="display:none;">
+	      	<h2 style="text-align:center;">确定删除</h2>
+	        <h2 style="text-align:center;" id="deleteInfo"></h2> 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-danger" id="deleteBtn">确定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    </div>
     </div>
 
     <!-- jQuery -->
@@ -184,6 +203,7 @@
     
     <!-- Custom Theme Scripts -->
     <script src="/js/custom.min.js"></script>
+    
     <!-- 引入Bootstrap-Table Js -->
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
@@ -191,3 +211,5 @@
     
   </body>
 </html>
+
+

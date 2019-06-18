@@ -50,9 +50,6 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'id',
             title: 'ID',
             sortable: true
@@ -75,10 +72,10 @@ function InitMainTable () {
             title: '院系',
         }, {
             field: 'positionId',
-            title: '职务',
+            title: '职务Id',
         },{
             field: 'status',
-            title: '状态',
+            title: '状态(1是，0否)',
         },{
             field: 'classId',
             title: '班级',
@@ -87,6 +84,7 @@ function InitMainTable () {
     });
     
 };
+
 
 
 

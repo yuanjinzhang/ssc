@@ -2,15 +2,16 @@
  * 
  */
 $(document).ready(function() {
-	InitMainTable();
-	InitUpdate();
-	})
+	initMainTable();
+	initUpdate();
+	initDelete();
+})
 var $table;
 //初始化bootstrap-table的内容
-function InitMainTable () {
+function initMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/getLabList';
-	//var rows= $("#table").bootstrapTable('getSelections');
+  //var rows= $("#table").bootstrapTable('getSelections');
 	$table = $('#table').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'post',                      //请求方式（*）
@@ -51,26 +52,27 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'eno',
             title: '实验编号',
             sortable: true
         }, {
             field: 'cname',
-            title: '实验名',
+            title: '实验名称'
             //sortable: true
-        },  {
+        }, {
             field: 'place',
             title: '地点',
+            //sortable: true,
+            //formatter: emailFormatter
         }, {
             field: 'etime',
             title: '时间',
-            //sortable: true
+            sortable: true
+            //formatter: linkFormatter
         }, {
             field: 'cno',
             title: '课程号',
+            //formatter: dateFormatter
         }, {
             field:'ID',
             title: '操作',
@@ -96,46 +98,78 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">编辑</button>',
-		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
+		'<button id="tableEditor" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#updateModal">修改</button>',
+		'<button id="tableDelete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">删除</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
-			$("#stuId").val(row.id);
-			$("#stuWorkNo").val(row.workNo);
-			$("#stuName").val(row.name);
-			$("#stuSex").val(row.sex);
+			$("#updateEno").val(row.eno);
+			$("#updateCname").val(row.cname);
+			$("#updatePlace").val(row.place);
+			$("#updateEtime").val(row.etime);
+			$("#updateCno").val(row.cno);
 		},
 		"click #tableDelete":function(e,value,row,index){
-			
+			//设置隐藏域ID
+			$("#deleteEno").val(row.eno);
+			$("#deleteInfo").text("Eno:"+row.eno+",Cname:"+row.cname);
 		}
 }
-function InitUpdate(){
-		$("#updateBtn").click(function(){
-			$.ajax("/select_test/update",
-			        {
-			            dataType: "json", // 预期服务器返回的数据类型。
-			            type: "POST", //  请求方式 POST或GET
-			            crossDomain:true,  // 跨域请求
-			            contentType: "application/json", //  发送信息至服务器时的内容编码类型
-			            // 发送到服务器的数据
-			            data:JSON.stringify({
-			            	"eno"		:	$("#Eno").val(),
-			    			"cname"	    :	$("#Cname").val(),
-			    			"etime"		:	$("#Etime").val(),
-			    			"place"		:	$("#Place").val(),
-			            }),
-			          
-			            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
-			            // 请求成功后的回调函数。
-			            success: function(data){
-			                    alert(data.msg);
-			                    $('#table').bootstrapTable('refresh');
-			            },
-			            error: function(){
-			                alert("请求错误，请检查网络连接");
-			           }
-			    })
-		})
+
+
+
+//数据修改
+function initUpdate(){
+	$("#updateBtn").click(function(){
+		$.ajax("/select_test/update",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"eno"		:	$("#updateEno").val(),
+		    			"cname"	    :	$("#updateCname").val(),
+		    			"place"		:	$("#updatePlace").val(),
+		    			"etime"		:	$("#updateEtime").val(),
+		    			"cno"		:	$("#updateCno").val(),
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	alert("请求成功，更新完成");
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
+}
+//数据删除
+function initDelete(){
+	$("#deleteBtn").click(function(){
+		$.ajax("/select_test/delete",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"eno"		:	$("#deleteEno").val()
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(){
+		            	alert("请求成功，删除完成");
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
 }

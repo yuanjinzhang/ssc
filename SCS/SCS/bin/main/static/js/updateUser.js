@@ -53,9 +53,6 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'id',
             title: 'ID',
             sortable: true
@@ -78,13 +75,13 @@ function InitMainTable () {
             title: '院系',
         }, {
             field: 'positionId',
-            title: '职务',
+            title: '职务Id',
         },{
             field: 'status',
             title: '状态',
         },{
             field: 'classId',
-            title: '班级',
+            title: '班级Id',
         },{
             field:'ID',
             title: '操作',
@@ -111,18 +108,22 @@ function InitMainTable () {
 function actionFormatter(value,row,index,field){
 	return [
 		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">修改</button>',
-		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
+		'<button id="tableDelete" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">删除</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
 			$("#updateId").val(row.id);
+			$("#updateName").val(row.name);
 			$("#updateCollege").val(row.college);
 			$("#updatePositionId").val(row.positionId);
 			$("#updateStatus").val(row.status);
 		},
 		"click #tableDelete":function(e,value,row,index){
-			
+			$("#deleteId").val(row.id);
+			$("#deleteInfo").text("Id:"+row.id+
+					"College:"+row.college+
+					"status:"+row.status);
 		}
 }
 function initUpdate(){
@@ -136,14 +137,13 @@ function initUpdate(){
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
 		            	"id":$("#updateId").val(),
-		            	"college":$("#updateCollege").val(),
-		            	"positionId":$("#updatePositionId").val(),
+		            	"college":$("#updateCollege").val(),		            	
 		            	"status":$("#updateStatus").val()
 		            }),	          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 		            // 请求成功后的回调函数。
 		            success: function(data){
-		            	alert("更新成功");
+		            	alert("请求完成，修改成功");		            	
 		            },
 		            error: function(){
 		                alert("请求错误，请检查网络连接");
@@ -152,6 +152,7 @@ function initUpdate(){
 	})
 }
 
+//数据删除
 function initDelete(){
 	$("#deleteBtn").click(function(){
 		$.ajax("/update_user/delete",
@@ -165,11 +166,13 @@ function initDelete(){
 		            	"id"		:	$("#deleteId").val()
 		            }),
 		          
-		            //async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 		            // 请求成功后的回调函数。
 		            success: function(data){
-		            	alert("删除成功");
-		               	
+	               		$("#deleteModal").modal('hide');
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');		             
+		               	$('#table').bootstrapTable('refresh');
 		            },
 		            error: function(){
 		                alert("请求错误，请检查网络连接");

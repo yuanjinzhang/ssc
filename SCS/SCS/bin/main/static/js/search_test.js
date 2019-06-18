@@ -1,15 +1,14 @@
-/**
- * 
- */
 $(document).ready(function() {
-	InitMainTable();
+	initMainTable();
+	initUpdate();
+	initDelete();
 })
 var $table;
 //初始化bootstrap-table的内容
-function InitMainTable () {
+function initMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/getUserList';
-	//var rows= $("#table").bootstrapTable('getSelections');
+    var queryUrl = '/getLabList';
+  //var rows= $("#table").bootstrapTable('getSelections');
 	$table = $('#table').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
         method: 'post',                      //请求方式（*）
@@ -50,40 +49,46 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            field: 'id',
-            title: 'ID',
+            field: 'eno',
+            title: '实验编号',
             sortable: true
         }, {
-            field: 'workno',
-            title: '用户编号',
-            //sortable: true
-        },  {
-            field: 'name',
-            title: '姓名',
-        }, {
-            field: 'sex',
-            title: '性别',
+            field: 'cname',
+            title: '实验名称'
             //sortable: true
         }, {
-            field: 'phone',
-            title: '手机号',
-        },{
-            field: 'college',
-            title: '院系',
+            field: 'place',
+            title: '地点',
+            //sortable: true,
+            //formatter: emailFormatter
         }, {
-            field: 'positionId',
-            title: '职务Id',
-        },{
-            field: 'status',
-            title: '状态(1是，0否)',
-        },{
-            field: 'classId',
-            title: '班级',
+            field: 'etime',
+            title: '时间',
+            sortable: true
+            //formatter: linkFormatter
+        }, {
+            field: 'cno',
+            title: '课程号',
+            //formatter: dateFormatter
         }],
-        
+        onLoadSuccess: function () {
+        	
+        },
+        onLoadError: function () {
+            showTips("数据加载失败！");
+        },
+        /*onDblClickRow: function (row, $element) {
+            var id = row.ID;
+            console.log(id);
+            //EditViewById(id, 'view');
+        },*/
     });
     
 };
+
+
+
+
 
 
 

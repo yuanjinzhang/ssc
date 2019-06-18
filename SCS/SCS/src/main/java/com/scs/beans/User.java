@@ -12,7 +12,13 @@ public class User {
 	private int positionId;
 	private int status;
 	private int classId;
-	
+    /*private userPosition userposition;		
+	public userPosition getuserPosition() {
+		return userposition;
+	}
+	public void setuserPosition(userPosition userposition) {
+		this.userposition = userposition;
+	}*/
 	public User(String name) {
 		this.name=name;
 	}
