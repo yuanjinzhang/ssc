@@ -3,11 +3,11 @@
  */
 $(document).ready(function() {
 	InitMainTable();
-	initUpdate();
+	initInsert();
+	initDelete();
 	
 })
 var $table;
-//初始化bootstrap-table的内容
 function InitMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
     var queryUrl = '/teacher/apply';
@@ -52,11 +52,8 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'applyno',
-            title: '开课申请编号',
+            title: '申请编号',
             align: 'center',
             sortable: true
         }, {
@@ -65,14 +62,28 @@ function InitMainTable () {
             align: 'center',
             //sortable: true
         }, {
-            field: 'cname',
-            title: '课程名',
+            field: 'userId',
+            title: '教师编号',
             align: 'center',
-            //sortable: true,
-            //formatter: emailFormatter
         }, {
             field: 'name',
-            title: '教师',
+            title: '教师名称',
+            align: 'center',
+        }, {
+            field: 'cname',
+            title: '课程名称',
+            align: 'center',
+        }, {
+            field: 'crrdit',
+            title: '学       分',
+            align: 'center',
+        }, {
+            field: 'period',
+            title: '学       时',
+            align: 'center',
+        }, {
+            field: 'applynum',
+            title: '人       数',
             align: 'center',
         }, {
             field:'ID',
@@ -94,26 +105,27 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">编辑</button>',
-		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
-	].join("");
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#insertModal">审核</button>',
+		'<button id="tableDelete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">删除</button>'
+		].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
-			$("#updateApplyno").val(row.applyno);
-			$("#updateApplytime").val(row.applytime);
-			$("#updateCname").val(row.cname);
-			$("#updateName").val(row.name);
-			//$("#Uname").val(row.username);
+			$("#insertApplyno").val(row.applyno);
+			$("#insertUserId").val(row.userId);
+			$("#insertCname").val(row.cname);
+			$("#insertCredit").val(row.credit);
+			$("#insertPeriod").val(row.period);
+			$("#insertApplynum").val(row.applynum);
 		},
 		"click #tableDelete":function(e,value,row,index){
-			
+			$("#deleteNo").val(row.applyno);
 		}
 }
-
-function initUpdate(){
-	$("#updateBtn").click(function(){
-		$.ajax("/teacherApplyUpdate",
+//数据增加
+function initInsert(){
+	$("#insertBtn").click(function(){
+		$.ajax("/course/insert",
 		        {
 		            dataType: "json", // 预期服务器返回的数据类型。
 		            type: "POST", //  请求方式 POST或GET
@@ -121,16 +133,54 @@ function initUpdate(){
 		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
 		            // 发送到服务器的数据
 		            data:JSON.stringify({
-		            	"applyno":$("#updateApplyno").val(),
-		            	"applytime":$("#updateApplytime").val(),
-		            	"cname":$("#updateCname").val(),
-		            	"name":$("#updateName").val()
+		            	"cno"			:	$("#insertApplyno").val(),
+		    			"userId"		:	$("#insertUserId").val(),
+		    			"cname"			:	$("#insertCname").val(),
+		    			"credit"		:	$("#insertCredit").val(),
+		    			"period"		:	$("#insertPeriod").val(),
+		    			"num"			:	$("#insertApplynum").val(),
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 		            // 请求成功后的回调函数。
 		            success: function(data){
-		            	alert("更新成功");
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		                if(data.status==200){
+			            	$("#insertModal").modal('hide');
+		                    $('#table').bootstrapTable('refresh');
+		                }
+		            },
+		            error: function(){
+		                alert("错误");
+		           }
+		    })
+	})
+}
+
+function initDelete(){
+	$("#deleteBtn").click(function(){
+		$.ajax("/delete/apply",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"applyno"		:	$("#deleteNo").val()
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+	               		$("#deleteModal").modal('hide');
+		            	$("#resMsg").text(data.msg);
+	               		$("#resInfoModal").modal('show');
+		               	if(data.status==200){
+		               		$('#table').bootstrapTable('refresh');
+		               	}
+		               	
 		            },
 		            error: function(){
 		                alert("请求错误，请检查网络连接");

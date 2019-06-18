@@ -5,7 +5,22 @@ public class SelectCourses {
 	private int cno;
 	private double score;
 	private int status;
+	private Course course;
+	private String canme;
 	
+	
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	public String getCanme() {
+		return canme;
+	}
+	public void setCanme(String canme) {
+		this.canme = canme;
+	}
 	public int getUserId() {
 		return userId;
 	}

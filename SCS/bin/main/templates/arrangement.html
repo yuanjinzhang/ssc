@@ -59,7 +59,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> 安排授课<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/turnPage/3">开课信息</a></li>
+                      <li><a href="/turnPage/4">安排授课地点及时间</a></li>
                     </ul>
                   </li>
                   </ul>
@@ -88,101 +88,7 @@
           </div>
         </div>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="/javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/images/img.jpg" alt="">John Doe
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="/javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="/javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="/javascript:;">Help</a></li>
-                    <li><a href="/turnPage/5"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="/javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        
         <!-- /top navigation -->
 
         <!-- page content -->
@@ -190,7 +96,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>课程安排</h3>
+                <h3>课程安排授课时间及地点</h3>
               </div>
 
               <div class="title_right">
@@ -199,6 +105,7 @@
 	                    <input type="text" class="form-control" name="课程名" placeholder="...课程名...">
 	                    <span class="input-group-btn">
 	                    	<button type="submit" class="btn btn-default submit" value= "搜索">搜索</button>
+	                    	
 	                    </span>
                   	</form>
                 </div>
@@ -211,7 +118,6 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>安排授课时间及地点</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -241,7 +147,7 @@
           </div>
         </div>
         <!-- /page content -->
-
+		
         <!-- footer content -->
         <footer>
           <div class="pull-right">
@@ -252,6 +158,55 @@
         <!-- /footer content -->
       </div>
     </div>
+    
+      <!-- 修改 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="updateModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">授课安排</h4>
+	      </div>
+	      
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	        	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课程编号</span>
+					  	<input type="text" class="form-control" id="updateCno" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >课程名称</span>
+					  	<input type="text" class="form-control" id="updateCname" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >授课地点</span>
+					  <input type="text" class="form-control" id="updatePlace" aria-describedby="basic-addon3" >
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >授课时间</span>
+					  	<input type="date" class="form-control" id="updateDate" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-primary" id="updateBtn">确认</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    
 
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
@@ -270,10 +225,8 @@
 	<script th:src="@{/js/arrangeCourse.js}"></script>
 	
   </body>
-<script type="text/javascript" src="/templets/js/jquery.js"></script>  
 
-<script type="text/javascript">    
-
+<script type="text/javascript">
 </script>
 </html>
 

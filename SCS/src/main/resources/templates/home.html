@@ -90,109 +90,12 @@
           </div>
         </div>
 
-        <!-- top navigation --><!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="/javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/images/img.jpg" alt="">John Doe
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="/javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="/javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="/javascript:;">Help</a></li>
-                    <li><a href="/turnPage/5"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="/javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>开课信息</h3>
+                <h3>审核开课申请</h3>
               </div>
 
               <div class="title_right">
@@ -213,7 +116,6 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>开课信息</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -250,6 +152,90 @@
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
+
+		    <!-- 审核通过插入course表 -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="insertModal">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">教师开课申请修改</h4>
+	      </div>
+	      
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	        <div class="row">
+	        	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >申请编号</span>
+					  	<input type="text" class="form-control" id="insertApplyno" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >学      时</span>
+					  	<input type="text" class="form-control" id="insertPeriod" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	          		<div class="input-group">
+					  <span class="input-group-addon" >课程名称</span>
+					  <input type="text" class="form-control" id="insertCname" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+			  	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >学      分</span>
+					  	<input type="text" class="form-control" id="insertCredit" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >教师编号</span>
+					  	<input type="text" class="form-control" id="insertUserId" aria-describedby="basic-addon3" readonly="readonly">
+					</div>
+	          	</div>
+	          	<div class="col-md-6">
+	         		<div class="input-group">
+					  	<span class="input-group-addon" >人      数</span>
+					  	<input type="text" class="form-control" id="insertApplynum" aria-describedby="basic-addon3">
+					</div>
+	          	</div>
+	        </div>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="insertBtn">提交</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- 删除apply表的相关信息 -->
+	<div class="modal fade=" tabindex="-1" role="dialog" id="deleteModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">学生数据删除</h4>
+	      </div>
+	      <!-- 主题内容 -->
+	      <div class="modal-body">
+	      	<!-- 隐藏域 -->
+	      	<input id="deleteNo" style="display:none;">
+	      	<h2 style="text-align:center;">确定删除</h2>
+	        <h2 style="text-align:center;" id="deleteInfo"></h2>
+	 
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	        <button type="button" class="btn btn-danger" id="deleteBtn">确定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
       </div>
     </div>
 
@@ -267,7 +253,7 @@
   	<!-- 引入Bootstrap-Table Js -->
 	<script th:src="@{/bootstrapTable/bootstrap-table.js}"></script>
 	<script th:src="@{/bootstrapTable/locale/bootstrap-table-zh-CN.js}"></script>
-	<script th:src="@{/js/EA.js}"></script>
+	<script th:src="@{/js/home.js}"></script>
 	
   </body>
 <script type="text/javascript">    

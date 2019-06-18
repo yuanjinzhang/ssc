@@ -3,34 +3,9 @@
  */
 $(document).ready(function() {
 	InitMainTable();
+	initUpdate();
 	
-	$("#updateBtn").click(function(){
-		$.ajax("/arrange/course",
-		        {
-		            dataType: "json", // 预期服务器返回的数据类型。
-		            type: "POST", //  请求方式 POST或GET
-		            crossDomain:true,  // 跨域请求
-		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
-		            // 发送到服务器的数据
-		            data:JSON.stringify({
-		            	"Applyno"	:	$("#Cno").val(),
-		    			"applytime"	:	$("#Ctime").val(),
-		    			"cname"		:	$("#Cname").val(),
-		    			//"username"	:	$("#Uname").val(),
-		            }),
-		          
-		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
-		            // 请求成功后的回调函数。
-		            success: function(data){
-		                    alert(data.msg);
-		                    $('#teacherapply').bootstrapTable('refresh');
-		            },
-		            error: function(){
-		                alert("请求错误，请检查网络连接");
-		           }
-		    })
-	})
-})
+})	
 var $table;
 //初始化bootstrap-table的内容
 function InitMainTable () {
@@ -77,9 +52,6 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'cno',
             title: '课程编号',
             align: 'center',
@@ -88,11 +60,16 @@ function InitMainTable () {
             field: 'cname',
             title: '课程名称',
             align: 'center',
-            //sortable: true
         }, {
-            field: 'name',
-            title: '教师名',
+            field: 'place',
+            title: '授课地点',
             align: 'center',
+
+        }, {
+            field: 'date',
+            title: '授课时间',
+            align: 'center',
+
         }, {
             field:'ID',
             title: '操作',
@@ -113,18 +90,45 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">安排授课</button>',
-		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">安排</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
-			$("#Cno").val(row.Applyno);
-			$("#Ctime").val(row.applytime);
-			$("#Cname").val(row.cname);
-			//$("#Uname").val(row.username);
+			$("#updateCno").val(row.cno);
+			$("#updateCname").val(row.canme);
+			$("#updatePlace").val(row.place);
+			$("#updateDate").val(row.date);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			
 		}
+}
+
+function initUpdate(){
+	$("#updateBtn").click(function(){
+		$.ajax("/arrange/course/update",
+		        {
+		            dataType: "json", // 预期服务器返回的数据类型。
+		            type: "POST", //  请求方式 POST或GET
+		            crossDomain:true,  // 跨域请求
+		            contentType: "application/json", //  发送信息至服务器时的内容编码类型
+		            // 发送到服务器的数据
+		            data:JSON.stringify({
+		            	"cno":$("#updateCno").val(),
+		            	"cname":$("#updateCname").val(),
+		            	"place":$("#updatePlace").val(),
+		            	"date":$("#updateDate").val()
+		            }),
+		          
+		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
+		            // 请求成功后的回调函数。
+		            success: function(data){
+		            	alert("更新成功");
+		            },
+		            error: function(){
+		                alert("请求错误，请检查网络连接");
+		           }
+		    })
+	})
 }

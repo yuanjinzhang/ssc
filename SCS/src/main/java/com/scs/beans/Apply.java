@@ -3,11 +3,11 @@ package com.scs.beans;
 import java.sql.Date;
 
 public class Apply {
-	private int Applyno;
-	private int UserId;
+	private int applyno;
+	private int userId;
 	private Date applytime;
-	private int Experiment;
-	private int Applynum;
+	private int experiment;
+	private int applynum;
 	private String cname;
 	private User user;
 	private String name;
@@ -26,16 +26,16 @@ public class Apply {
 		this.user = user;
 	}
 	public int getApplyno() {
-		return Applyno;
+		return applyno;
 	}
 	public void setApplyno(int applyno) {
-		Applyno = applyno;
+		this.applyno = applyno;
 	}
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 	public Date getApplytime() {
 		return applytime;
@@ -44,16 +44,16 @@ public class Apply {
 		this.applytime = applytime;
 	}
 	public int getExperiment() {
-		return Experiment;
+		return experiment;
 	}
 	public void setExperiment(int experiment) {
-		Experiment = experiment;
+		this.experiment = experiment;
 	}
 	public int getApplynum() {
-		return Applynum;
+		return applynum;
 	}
 	public void setApplynum(int applynum) {
-		Applynum = applynum;
+		this.applynum = applynum;
 	}
 	public String getCname() {
 		return cname;

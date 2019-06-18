@@ -3,40 +3,42 @@ package com.scs.beans;
 import java.sql.Date;
 
 public class Lab {
-	private int Eno;
-	private int Cname;
-	private String Place;
-	private Date Etime;
-	private int Cno;
+	private int eno;
+	private int cname;
+	private String place;
+	private Date etime;
+	private int cno;
+	
+	
 	public int getEno() {
-		return Eno;
+		return eno;
 	}
 	public void setEno(int eno) {
-		Eno = eno;
+		this.eno = eno;
 	}
 	public int getCname() {
-		return Cname;
+		return cname;
 	}
 	public void setCname(int cname) {
-		Cname = cname;
+		this.cname = cname;
 	}
 	public String getPlace() {
-		return Place;
+		return place;
 	}
 	public void setPlace(String place) {
-		Place = place;
+		this.place = place;
 	}
 	public Date getEtime() {
-		return Etime;
+		return etime;
 	}
 	public void setEtime(Date etime) {
-		Etime = etime;
+		this.etime = etime;
 	}
 	public int getCno() {
-		return Cno;
+		return cno;
 	}
 	public void setCno(int cno) {
-		Cno = cno;
+		this.cno = cno;
 	}
 	
 }

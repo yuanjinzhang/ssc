@@ -3,8 +3,10 @@ package com.scs.beans;
 public class Class {
 	private String classnameString;
 	private String classteacher;
-	private int Grade;
-	private int Num;
+	private int grade;
+	private int num;
+	
+	
 	public String getClassnameString() {
 		return classnameString;
 	}
@@ -18,15 +20,15 @@ public class Class {
 		this.classteacher = classteacher;
 	}
 	public int getGrade() {
-		return Grade;
+		return grade;
 	}
 	public void setGrade(int grade) {
-		Grade = grade;
+		this.grade = grade;
 	}
 	public int getNum() {
-		return Num;
+		return num;
 	}
 	public void setNum(int num) {
-		Num = num;
+		this.num = num;
 	}
 }

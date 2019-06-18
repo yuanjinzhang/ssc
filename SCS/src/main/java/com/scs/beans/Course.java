@@ -1,5 +1,7 @@
 package com.scs.beans;
 
+import java.sql.Date;
+
 public class Course {
 	private int cno;
 	private String cname;
@@ -7,9 +9,17 @@ public class Course {
 	private int credit;
 	private int period;
 	private int num;
+	private String place;
+	private Date date;
 	private User user;
 	private String name;
 	
+	public Course(String canme) {
+		this.cname=canme;
+	}
+	public Course() {
+		
+	}
 	public User getUser() {
 		return user;
 	}
@@ -21,6 +31,18 @@ public class Course {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public int getCno() {
 		return cno;

@@ -5,12 +5,12 @@ $(document).ready(function() {
 	InitMainTable();
 	initUpdate();
 	
-})	
+})
 var $table;
 //初始化bootstrap-table的内容
 function InitMainTable () {
     //记录页面bootstrap-table全局变量$table，方便应用
-    var queryUrl = '/arrange/course';
+    var queryUrl = '/student/select/course';
 	//var rows= $("#table").bootstrapTable('getSelections');
 	$table = $('#table').bootstrapTable({
         url: queryUrl,                      //请求后台的URL（*）
@@ -51,28 +51,23 @@ function InitMainTable () {
             };
             return temp;
         },
-        columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
+        columns: [ {
             field: 'cno',
             title: '课程编号',
             align: 'center',
             sortable: true
         }, {
-            field: 'cname',
-            title: '课程名称',
+        	 field: 'cname',
+             title: '课程名称',
+             align: 'center',
+         }, {
+            field: 'userId',
+            title: '学生学号',
             align: 'center',
         }, {
-            field: 'place',
-            title: '授课地点',
+            field: 'score',
+            title: '成绩',
             align: 'center',
-
-        }, {
-            field: 'date',
-            title: '授课时间',
-            align: 'center',
-
         }, {
             field:'ID',
             title: '操作',
@@ -93,15 +88,15 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">安排授课</button>'
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">修改</button>',
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
 			$("#updateCno").val(row.cno);
-			$("#updateCname").val(row.canme);
-			$("#updatePlace").val(row.place);
-			$("#updateDate").val(row.date);
+			$("#updateCname").val(row.cname);
+			$("#updateUserId").val(row.userId);
+			$("#updateScore").val(row.score);
 		},
 		"click #tableDelete":function(e,value,row,index){
 			
@@ -110,7 +105,7 @@ var operateEvents={
 
 function initUpdate(){
 	$("#updateBtn").click(function(){
-		$.ajax("/arrange/course/update",
+		$.ajax("/update/selectCourse",
 		        {
 		            dataType: "json", // 预期服务器返回的数据类型。
 		            type: "POST", //  请求方式 POST或GET
@@ -120,8 +115,8 @@ function initUpdate(){
 		            data:JSON.stringify({
 		            	"cno":$("#updateCno").val(),
 		            	"cname":$("#updateCname").val(),
-		            	"place":$("#updatePlace").val(),
-		            	"date":$("#updateDate").val()
+		            	"userId":$("#updateUserId").val(),
+		            	"score":$("#updateScore").val()
 		            }),
 		          
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
