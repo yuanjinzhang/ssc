@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.scs.beans.Teacher;
 import com.scs.beans.User;
 import com.scs.service.LoginService;
 import com.scs.service.TestService;

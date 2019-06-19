@@ -7,6 +7,14 @@ public class Course {
 	private int credit;
 	private int period;
 	private int num;
+	
+	public Course(String cname) {
+		this.cname=cname;
+	}
+	public Course() {
+		
+	}
+	
 	public int getCno() {
 		return cno;
 	}

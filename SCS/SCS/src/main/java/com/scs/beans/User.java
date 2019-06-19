@@ -12,13 +12,37 @@ public class User {
 	private int positionId;
 	private int status;
 	private int classId;
-    /*private userPosition userposition;		
-	public userPosition getuserPosition() {
-		return userposition;
+	
+    private Position position;
+    private String positionName;
+    
+    private Course course;
+    private String cname;
+    
+    public Course getCourse() {
+		return course;
 	}
-	public void setuserPosition(userPosition userposition) {
-		this.userposition = userposition;
-	}*/
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+	public String getPositionName() {
+		return positionName;
+	}
+	public void setPositionName(String positionName) {
+		this.positionName = positionName;
+	}
 	public User(String name) {
 		this.name=name;
 	}

@@ -56,14 +56,12 @@ function InitMainTable () {
         }, {
             field: 'workno',
             title: '用户编号',
-            //sortable: true
         },  {
             field: 'name',
             title: '姓名',
         }, {
             field: 'sex',
             title: '性别',
-            //sortable: true
         }, {
             field: 'phone',
             title: '手机号',
@@ -71,14 +69,14 @@ function InitMainTable () {
             field: 'college',
             title: '院系',
         }, {
-            field: 'positionId',
-            title: '职务Id',
+            field: 'positionName',
+            title: '职务',
         },{
             field: 'status',
             title: '状态(1是，0否)',
         },{
-            field: 'classId',
-            title: '班级',
+            field: 'cname',
+            title: '班级名称',
         }],
         
     });
