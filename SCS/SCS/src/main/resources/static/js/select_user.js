@@ -75,7 +75,7 @@ function InitMainTable () {
             field: 'status',
             title: '状态(1是，0否)',
         },{
-            field: 'cname',
+            field: 'classnameString',
             title: '班级名称',
         }],
         

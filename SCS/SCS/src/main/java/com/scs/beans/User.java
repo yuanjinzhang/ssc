@@ -16,7 +16,22 @@ public class User {
     private Position position;
     private String positionName;
     
-    private Course course;
+    private Class class1;
+    private String classnameString;
+    
+    public Class getClass1() {
+		return class1;
+	}
+	public void setClass1(Class class1) {
+		this.class1 = class1;
+	}
+	public String getClassnameString() {
+		return classnameString;
+	}
+	public void setClassnameString(String classnameString) {
+		this.classnameString = classnameString;
+	}
+	private Course course;
     private String cname;
     
     public Course getCourse() {
@@ -43,6 +58,8 @@ public class User {
 	public void setPositionName(String positionName) {
 		this.positionName = positionName;
 	}
+	
+	
 	public User(String name) {
 		this.name=name;
 	}

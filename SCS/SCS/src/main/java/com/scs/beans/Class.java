@@ -1,10 +1,24 @@
 package com.scs.beans;
 
 public class Class {
+	private int id;
 	private String classnameString;
 	private String classteacher;
 	private int Grade;
 	private int Num;
+	
+	public Class(String classnameString) {
+		this.classnameString=classnameString;
+	}
+	public Class() {		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}	
 	public String getClassnameString() {
 		return classnameString;
 	}
