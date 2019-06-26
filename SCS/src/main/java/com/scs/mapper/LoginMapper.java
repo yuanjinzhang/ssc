@@ -17,7 +17,7 @@ import com.scs.beans.Apply;
 import com.scs.beans.Course;
 import com.scs.beans.SelectCourses;
 import com.scs.beans.User;
-import com.scs.beans.userPosition;
+import com.scs.beans.Position;
 
 @Mapper
 public interface LoginMapper {
@@ -78,6 +78,5 @@ public interface LoginMapper {
 	
 	@Update("UPDATE lab_course SET place=#{place},date=#{date} WHERE cno=#{cno}")
 	int updatearrangeCourse(Course course);
-	
 	
 }

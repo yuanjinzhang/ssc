@@ -11,15 +11,17 @@ public class Course {
 	private int num;
 	private String place;
 	private Date date;
+	
 	private User user;
 	private String name;
 	
-	public Course(String canme) {
-		this.cname=canme;
+	public Course(String cname) {
+		this.cname=cname;
 	}
 	public Course() {
 		
 	}
+	
 	public User getUser() {
 		return user;
 	}

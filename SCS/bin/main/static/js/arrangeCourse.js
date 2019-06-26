@@ -52,9 +52,6 @@ function InitMainTable () {
             return temp;
         },
         columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
             field: 'cno',
             title: '课程编号',
             align: 'center',
@@ -93,13 +90,13 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">安排授课</button>'
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#updateModal">安排</button>'
 	].join("");
 }
 var operateEvents={
 		"click #tableEditor":function(e,value,row,index){
 			$("#updateCno").val(row.cno);
-			$("#updateCname").val(row.canme);
+			$("#updateCname").val(row.cname);
 			$("#updatePlace").val(row.place);
 			$("#updateDate").val(row.date);
 		},
@@ -127,10 +124,10 @@ function initUpdate(){
 		            async: false, // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 		            // 请求成功后的回调函数。
 		            success: function(data){
-		            	alert("更新成功");
+		            	alert("成功");
 		            },
 		            error: function(){
-		                alert("请求错误，请检查网络连接");
+		                alert("错误");
 		           }
 		    })
 	})

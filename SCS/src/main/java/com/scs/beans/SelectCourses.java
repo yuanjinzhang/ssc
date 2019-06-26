@@ -5,22 +5,22 @@ public class SelectCourses {
 	private int cno;
 	private double score;
 	private int status;
+	//¿Î³ÌÃû
 	private Course course;
-	private String canme;
-	
-	
+	private String cname;
 	public Course getCourse() {
 		return course;
 	}
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	public String getCanme() {
-		return canme;
+	public String getCname() {
+		return cname;
 	}
-	public void setCanme(String canme) {
-		this.canme = canme;
+	public void setCanme(String cname) {
+		this.cname = cname;
 	}
+	
 	public int getUserId() {
 		return userId;
 	}

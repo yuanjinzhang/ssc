@@ -75,10 +75,7 @@ function InitMainTable () {
             };
             return temp;
         },
-        columns: [{
-            checkbox: true,  
-            visible: true                  //是否显示复选框  
-        }, {
+        columns: [ {
             field: 'id',
             title: 'ID',
             align: 'center',
@@ -135,7 +132,7 @@ function InitMainTable () {
 
 function actionFormatter(value,row,index,field){
 	return [
-		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">编辑</button>',
+		'<button id="tableEditor" type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">审核</button>',
 		'<button id="tableDelete" type="button" class="btn btn-danger">删除</button>'
 	].join("");
 }

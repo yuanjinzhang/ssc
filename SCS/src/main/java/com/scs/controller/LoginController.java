@@ -89,7 +89,7 @@ public class LoginController {
 		ResponseModel<Apply> resModel=loginService.applyList(pageModel.getOffset(),pageModel.getPageSize());	
 		return resModel;
 	}
-	
+	//审核通过的课程，添加到课程表中
 	@RequestMapping("/course/insert")
 	@ResponseBody
 	public ResponseModel<Course> insertCourse(@RequestBody Course course) {
@@ -118,7 +118,7 @@ public class LoginController {
 	public ResponseModel<Course> updateCourse(@RequestBody Course course) {
 		return loginService.updateCourse(course);
 	}
-	
+	//安排课程时间地点
 	@RequestMapping("/arrange/course/update")
 	@ResponseBody
 	public ResponseModel<Course> updatearrangeCourse(@RequestBody Course course) {

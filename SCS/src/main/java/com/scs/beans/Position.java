@@ -1,8 +1,8 @@
 package com.scs.beans;
 
-public class userPosition {
+public class Position {
 	private int id;
-	private String position_name;
+	private String positionName;
 	private int status;
 	
 	public int getId() {
@@ -12,10 +12,10 @@ public class userPosition {
 		this.id = id;
 	}
 	public String getPosition_name() {
-		return position_name;
+		return positionName;
 	}
-	public void setPosition_name(String position_name) {
-		this.position_name = position_name;
+	public void setPosition_name(String positionName) {
+		this.positionName = positionName;
 	}
 	public int getStatus() {
 		return status;

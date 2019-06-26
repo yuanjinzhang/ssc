@@ -38,8 +38,6 @@
               </div>
               <div class="profile_info">
                 <span>Welcome</span>
-                <span th:each=" User: ${usersList}"> 					             
-						          <td th:text="${User.name}"></td> 
               </div>
               <div class="clearfix"></div>
             </div>
@@ -64,10 +62,8 @@
                       <li><a href="/turnPage/4">安排授课地点及时间</a></li>
                     </ul>
                   </li>
-                  </ul>
-              
+                  </ul>            
               </div>
-
             </div>
             <!-- /sidebar menu -->
 
@@ -115,24 +111,6 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
                   <div class="x_content">
                       	<div id="toolbar"></div>
 							<table id="table"></table>
@@ -219,13 +197,13 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">学生数据删除</h4>
+	        <h4 class="modal-title">教师申请信息</h4>
 	      </div>
 	      <!-- 主题内容 -->
 	      <div class="modal-body">
 	      	<!-- 隐藏域 -->
 	      	<input id="deleteNo" style="display:none;">
-	      	<h2 style="text-align:center;">确定删除</h2>
+	      	<h2 style="text-align:center;">确认删除信息</h2>
 	        <h2 style="text-align:center;" id="deleteInfo"></h2>
 	 
 	      </div>

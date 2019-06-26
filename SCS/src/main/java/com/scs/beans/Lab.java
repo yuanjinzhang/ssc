@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Lab {
 	private int eno;
-	private int cname;
+	private String cname;
 	private String place;
 	private Date etime;
 	private int cno;
@@ -16,10 +16,10 @@ public class Lab {
 	public void setEno(int eno) {
 		this.eno = eno;
 	}
-	public int getCname() {
+	public String getCname() {
 		return cname;
 	}
-	public void setCname(int cname) {
+	public void setCname(String cname) {
 		this.cname = cname;
 	}
 	public String getPlace() {
